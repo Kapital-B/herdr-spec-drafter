@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git fetch:*)",
+      "Bash(git -C:*)",
+      "Bash(git worktree list:*)",
+      "Bash(git worktree add:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git branch:*)",
+      "Bash(herdr-app do tab.rename:*)",
+      "{linear}__get_issue",
+      "{linear}__list_comments",
+      "{linear}__get_attachment",
+      "{linear}__extract_images",
+      "{linear}__list_issues",
+      "{linear}__get_project",
+      "{linear}__get_document",
+      "{linear}__list_documents",
+      "{linear}__get_team",
+      "{linear}__get_user",
+      "{linear}__get_milestone",
+      "{linear}__get_initiative",
+      "{notion}__notion-fetch",
+      "{notion}__notion-search",
+      "{notion}__notion-download-attachment",
+      "{notion}__notion-get-file-download-urls"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr merge:*)",
+      "{linear}__save_comment",
+      "{linear}__save_issue",
+      "{linear}__save_document",
+      "{linear}__delete_comment",
+      "{notion}__notion-create-pages",
+      "{notion}__notion-update-page",
+      "{notion}__notion-create-comment",
+      "{slack}__slack_send_message"
+    ]
+  }
+}

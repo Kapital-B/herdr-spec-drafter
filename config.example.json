@@ -1,0 +1,29 @@
+{
+  "$comment": "Copy to ~/.config/herdr-spec-drafter/config.json. Only set what differs from the defaults (see spec_drafter/config.py).",
+  "workspace_root": "~/code",
+  "worktrees_dir": "{workspace_root}/worktrees",
+  "drafts_dir": "{workspace_root}/.spec-drafts",
+  "spec_dir": "docs/specs",
+  "max_open_agents": 12,
+  "interval_minutes": 60,
+  "connectors": {
+    "linear": "mcp__claude_ai_Linear",
+    "notion": "mcp__claude_ai_Notion",
+    "slack": "mcp__claude_ai_Slack"
+  },
+  "linear": {
+    "source": "auto",
+    "statuses": [
+      "Backlog",
+      "Todo"
+    ],
+    "current_cycle_only": true,
+    "team_keys": []
+  },
+  "herdr": {
+    "space_name": "Specs"
+  },
+  "agent": {
+    "on_implement": ""
+  }
+}
