@@ -27,20 +27,39 @@ After you review the spec there, ask it to post the questions or to implement.
   `connectors` below.
 - Python 3.9+ (standard library only)
 
-## Setup
+## Install
 
 ```sh
-./install.sh            # or: ./install.sh /some/bin/dir
+curl -fsSL https://raw.githubusercontent.com/Kapital-B/herdr-spec-drafter/main/install.sh | bash
 ```
 
-The installer:
+This downloads the latest release (or `main` if there are no releases yet) to
+`~/.local/share/herdr-spec-drafter`. Then it:
 - links `herdr-spec-drafter` into `~/.local/bin` and warns if that isn't on your `PATH`;
 - creates `~/.config/herdr-spec-drafter/config.json` from `config.example.json`, if
   you don't have one (edit at least `workspace_root`);
 - checks for `python3` 3.9+, `claude`, `hc`, `herdr-app` and `git`, and for a Linear key.
 
-It's safe to re-run, and never overwrites your config or an unrelated file. The
-command is a symlink to this repo, so a `git pull` updates it.
+It never overwrites your config or an unrelated file, and it's safe to re-run.
+Options go after `bash -s --`:
+
+```sh
+curl -fsSL .../install.sh | bash -s -- --version v0.1.0     # a specific release or branch
+curl -fsSL .../install.sh | bash -s -- --bin-dir ~/bin      # link the command elsewhere
+```
+
+**Update:** `herdr-spec-drafter update` (or `update --version v0.2.0`) re-runs the
+installer. `herdr-spec-drafter version` shows what you have. An update replaces the
+downloaded copy, so don't edit files in `~/.local/share/herdr-spec-drafter`. To
+customise the prompt or permissions, copy them elsewhere and point `agent.prompt`
+and `agent.settings` in your config at the copies.
+
+**Uninstall:** `rm ~/.local/bin/herdr-spec-drafter && rm -rf ~/.local/share/herdr-spec-drafter`.
+Your config is in `~/.config/herdr-spec-drafter` and the state is in
+`~/.local/state/herdr-spec-drafter`, if you want those gone too.
+
+**From a clone** (to develop it): run `./install.sh` in the clone. The command is
+then linked to your clone, and `git pull` updates it.
 
 **Linear access.** With `"source": "auto"`, it uses a Linear personal API key if
 it finds one in `$LINEAR_API_KEY` or `~/.config/herdr-spec-drafter/linear-api-key`.
@@ -59,6 +78,8 @@ herdr-spec-drafter status           # launched tickets: live?, agent status, res
 herdr-spec-drafter issues           # matching issues in launch order
 herdr-spec-drafter forget ENG-123   # allow a ticket to be launched again
 herdr-spec-drafter stop             # stop the dispatcher; agents keep running
+herdr-spec-drafter version          # installed version
+herdr-spec-drafter update           # install the latest release
 ```
 
 **Closing a ticket's tab frees its slot.** A ticket is launched only once. Use
@@ -128,3 +149,7 @@ whole session.
 ```sh
 python3 -m unittest discover -s tests -t .
 ```
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
